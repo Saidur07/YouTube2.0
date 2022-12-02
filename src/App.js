@@ -25,11 +25,11 @@ const App = () => {
     </Fade>
   ) : (
     <div className={"bg-slate-900 grid place-items-center "}>
-      <div className={location?.pathname !== "/splash" && "max-w-7xl"}>
+      <div className={location?.pathname !== "/splash" && "max-w-[1920px]"}>
         {location?.pathname !== "/splash" && <Navbar />}
         <Routes>
-          <Route path="/splash" element={<Splash />} />
           <Route exact path="/" element={<Feed />} />
+          <Route path="/splash" element={<Splash />} />
           <Route path="/video/:id" element={<VideoDetail />} />
           <Route path="/channel/:id" element={<ChannelDetail />} />
           <Route path="/search/:searchTerm" element={<SearchFeed />} />

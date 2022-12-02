@@ -16,23 +16,23 @@ const Feed = () => {
     }, [selectedCategory]);
 
   return (
-    <Stack sx={{ flexDirection: { sx: "column", md: "row" } }}>
-      <Box sx={{ height: { sx: "auto", md: "91vh" }, borderRight: "1px solid #3d3d3d", px: { sx: 0, md: 2 } }}>
+    <div className="flex flex-row">
+      <div className="h-[91vh] border-r-2 border-[#3d3d3d] px-2" >
         <Sidebar selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
         
-        <Typography className="copyright " variant="body2" sx={{ mt: 1.5, color: "gray", }}>
+        <p className="copyright mt-[1.5px] text-slate-400 font-semibold">
           Copyright © 2022 by <a href="https://github.com/programmer-saidur" target="_blank" rel="noreferrer" className="gradient-text">Programmer Saidur</a> 
-        </Typography>
-      </Box>
+        </p>
+      </div>
 
-      <Box p={2} sx={{ overflowY: "auto", height: "90vh", flex: 2 }}>
-        <Typography variant="h4" fontWeight="bold" mb={2} sx={{ color: "white" }}>
+      <div className="p-2 overflow-auto h-[91vh] flex-1" >
+        <p className="text-3xl font-bold mb-2 text-white">
           <span style={{ color: "#1b9ff1" }} className="gradient-text">{selectedCategory}</span> videos
-        </Typography>
+        </p>
 
         <Videos videos={videos} />
-      </Box>
-    </Stack>
+      </div>
+    </div>
   );
 };
 

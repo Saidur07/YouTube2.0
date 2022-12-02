@@ -15,13 +15,14 @@ const VideoCard = ({ video: { id: { videoId }, snippet } }) => {
   const diffInMilliseconds = new Date(currentDate).getTime() - new Date(date2).getTime()
   const diffInDays = diffInMilliseconds / DAY_UNIT_IN_MILLISECONDS
   return(
-  <Card sx={{ width: { xs: '100%', sm: '358px', md: "320px", }, boxShadow: "none", borderRadius: 0 }}>
+  <Card sx={{ width: { xs: '100%', sm: '358px', md: "330px", }, boxShadow: "none", borderRadius: 0 }} className="card-glass">
     <Link to={videoId ? `/video/${videoId}` : `/video/cV2gBU6hKfY` }>
       <CardMedia image={snippet?.thumbnails?.high?.url || demoThumbnailUrl} alt={snippet?.title} 
         sx={{ width: { xs: '100%', sm: '358px'}, height: 180 }} 
       />
     </Link>
-    <CardContent sx={{  height: '106px' }} className="bg-[#202020]">
+    
+    <CardContent sx={{  height: '110px' }} className="bg-[#202020] backdrop-blur-2xl">
       <Link to={videoId ? `/video/${videoId}` : demoVideoUrl } >
         <Typography variant="subtitle1" fontWeight="bold" color="#FFF">
          { snippet?.title?.length > 60 ? snippet?.title.slice(0, 60) + "..." : snippet?.title  }

@@ -1,20 +1,14 @@
 import React from "react";
-import { Stack } from "@mui/material";
 
 import { categories } from "../utils/constants";
 
 const Categories = ({ selectedCategory, setSelectedCategory }) => (
-  <Stack
-    direction="row"
-    sx={{
-      overflowY: "auto",
-      height: { sx: "auto", md: "95%" },
-      flexDirection: { md: "column" },
-    }}
+  <div
+    className="overflow-y-auto h-[95%] flex flex-col"
   >
     {categories.map((category) => (
       <button
-        className="category-btn"
+        className="category-btn "
         onClick={() => setSelectedCategory(category.name)}
         style={{
           background: category.name === selectedCategory && "#1b9ff1",
@@ -30,7 +24,7 @@ const Categories = ({ selectedCategory, setSelectedCategory }) => (
         </span>
       </button>
     ))}
-  </Stack>
+  </div>
 );
 
 export default Categories;

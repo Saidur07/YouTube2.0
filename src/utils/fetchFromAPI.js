@@ -4,7 +4,7 @@ export const BASE_URL = "https://youtube-v31.p.rapidapi.com";
 
 const options = {
   params: {
-    maxResults: 100,
+    maxResults: 500,
     regionCode: "US",
   },
   headers: {
