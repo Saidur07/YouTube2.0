@@ -22,7 +22,7 @@ const VideoCard = ({ video: { id: { videoId }, snippet } }) => {
       />
     </Link>
     
-    <CardContent sx={{  height: '110px' }} className="bg-[#202020] backdrop-blur-2xl">
+    <CardContent sx={{  height: '130px' }} className="bg-[#202020] backdrop-blur-2xl">
       <Link to={videoId ? `/video/${videoId}` : demoVideoUrl } >
         <Typography variant="subtitle1" fontWeight="bold" color="#FFF">
          { snippet?.title?.length > 60 ? snippet?.title.slice(0, 60) + "..." : snippet?.title  }

@@ -5,7 +5,9 @@ import { Typography, Box, Stack } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
 import { Videos, Loader } from "./";
+import VideoDetailSkeleton from "./VideoDetailSkeleton"
 import { fetchFromAPI } from "../utils/fetchFromAPI";
+import VideoSkeleton from "./VideoSkeleton";
 
 const VideoDetail = () => {
   const [videoDetail, setVideoDetail] = useState(null);
@@ -20,13 +22,64 @@ const VideoDetail = () => {
       .then((data) => setVideos(data.items))
   }, [id]);
 
-  if(!videoDetail?.snippet) return <Loader />;
-
+  // if(!videoDetail?.snippet) return  <VideoDetailSkeleton/>;
+  if(!videoDetail?.snippet || !videos?.length) return (<div className="grid grid-cols-5 ">
+  <div className="col-span-4"><VideoDetailSkeleton/> </div>
+  <div className="flex justify-center items-center px-2 py-1 "  >
+  <div className={ "space-y-2" } >
+<VideoSkeleton></VideoSkeleton>
+<VideoSkeleton></VideoSkeleton>
+<VideoSkeleton></VideoSkeleton>
+<VideoSkeleton></VideoSkeleton>
+<VideoSkeleton></VideoSkeleton>
+<VideoSkeleton></VideoSkeleton>
+<VideoSkeleton></VideoSkeleton>
+<VideoSkeleton></VideoSkeleton>
+<VideoSkeleton></VideoSkeleton>
+<VideoSkeleton></VideoSkeleton>
+<VideoSkeleton></VideoSkeleton>
+<VideoSkeleton></VideoSkeleton>
+<VideoSkeleton></VideoSkeleton>
+<VideoSkeleton></VideoSkeleton>
+<VideoSkeleton></VideoSkeleton>
+<VideoSkeleton></VideoSkeleton>
+<VideoSkeleton></VideoSkeleton>
+<VideoSkeleton></VideoSkeleton>
+</div>)
+    </div>
+     </div>)
   const { snippet: { title, channelId, channelTitle, publishedAt, description }, statistics: { viewCount, likeCount } } = videoDetail;
   return (
-    <Box minHeight="95vh">
-      <Stack direction={{ xs: "column", md: "row" }}>
-        <Box flex={1}>
+    <div className="min-h-[95vh]">
+      {!videoDetail?.snippet || !videos?.length ? <div className="grid grid-cols-5 ">
+      <div className="col-span-4"><VideoDetailSkeleton/> </div>
+      <div className="flex justify-center items-center px-2 py-1 "  >
+      <div className={ "space-y-2" } >
+  <VideoSkeleton></VideoSkeleton>
+  <VideoSkeleton></VideoSkeleton>
+  <VideoSkeleton></VideoSkeleton>
+  <VideoSkeleton></VideoSkeleton>
+  <VideoSkeleton></VideoSkeleton>
+  <VideoSkeleton></VideoSkeleton>
+  <VideoSkeleton></VideoSkeleton>
+  <VideoSkeleton></VideoSkeleton>
+  <VideoSkeleton></VideoSkeleton>
+  <VideoSkeleton></VideoSkeleton>
+  <VideoSkeleton></VideoSkeleton>
+  <VideoSkeleton></VideoSkeleton>
+  <VideoSkeleton></VideoSkeleton>
+  <VideoSkeleton></VideoSkeleton>
+  <VideoSkeleton></VideoSkeleton>
+  <VideoSkeleton></VideoSkeleton>
+  <VideoSkeleton></VideoSkeleton>
+  <VideoSkeleton></VideoSkeleton>
+  </div>)
+        </div>
+         </div> : ""}
+      <div className="grid grid-cols-5 ">
+        
+        <div className="col-span-4">
+     
           <Box sx={{ width: "100%", position: "sticky", top: "86px" }}>
             <ReactPlayer url={`https://www.youtube.com/watch?v=${id}`} className="react-player" controls />
             <Typography color="#fff" variant="h5" fontWeight="bold" p={2}>
@@ -49,12 +102,12 @@ const VideoDetail = () => {
               </Stack>
             </Stack>
           </Box>
-        </Box>
-        <Box px={2} py={{ md: 1, xs: 5 }} justifyContent="center" alignItems="center" >
-          <Videos videos={videos} direction="column" />
-        </Box>
-      </Stack>
-    </Box>
+        </div>
+        <div className="flex justify-center items-center px-2 py-1 "  >
+          <Videos videos={videos} single={true} loading={false}/>
+        </div>
+      </div>
+    </div>
   );
 };
 

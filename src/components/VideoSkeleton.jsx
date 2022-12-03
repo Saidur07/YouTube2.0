@@ -13,9 +13,9 @@ const VideoSkeleton = () => {
           <Skeleton className="rounded-lg" height={10}></Skeleton>
         </p>
         <p className="flex justify-between items-center text-gray-500">
-          <Skeleton className="rounded-lg" width={160}></Skeleton>
-          ・
-          <Skeleton className="rounded-lg" width={160}></Skeleton>
+          <Skeleton className="rounded-lg" width={150}></Skeleton>
+          
+          <Skeleton className="rounded-lg" width={150}></Skeleton>
         </p>
       </SkeletonTheme>
     </div>

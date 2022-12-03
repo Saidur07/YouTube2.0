@@ -24,7 +24,7 @@ const App = () => {
       <Splash></Splash>
     </Fade>
   ) : (
-    <div className={"bg-slate-900 grid place-items-center "}>
+    <div className={"bg-slate-900 flex items-center justify-center "}>
       <div className={location?.pathname !== "/splash" && "max-w-[1920px]"}>
         {location?.pathname !== "/splash" && <Navbar collapse={collapse} />}
         <Routes>

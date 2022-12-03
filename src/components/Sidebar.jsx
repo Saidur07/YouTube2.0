@@ -2,9 +2,9 @@ import React from "react";
 
 import { categories } from "../utils/constants";
 
-const Categories = ({ selectedCategory, setSelectedCategory, collapse }) => (
+const Categories = ({ selectedCategory, setSelectedCategory, collapse,  }) => (
   <div
-    className="overflow-y-auto h-[95%] flex flex-col transform transition-all duration-150 ease-out"
+    className="overflow-y-auto h-[95%] flex flex-col  transition-all duration-150 ease-out"
   >
     
  
