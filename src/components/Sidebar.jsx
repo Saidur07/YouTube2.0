@@ -2,10 +2,12 @@ import React from "react";
 
 import { categories } from "../utils/constants";
 
-const Categories = ({ selectedCategory, setSelectedCategory }) => (
+const Categories = ({ selectedCategory, setSelectedCategory, collapse }) => (
   <div
-    className="overflow-y-auto h-[95%] flex flex-col"
+    className="overflow-y-auto h-[95%] flex flex-col transform transition-all duration-150 ease-out"
   >
+    
+ 
     {categories.map((category) => (
       <button
         className="category-btn "
@@ -15,13 +17,17 @@ const Categories = ({ selectedCategory, setSelectedCategory }) => (
           color: "white",
         }}
         key={category.name}
-      >
-        <span style={{ color: category.name === selectedCategory ? "white" : "#1b9ff1", marginRight: "15px",  }} className="gradient-text">
-          {category.icon}
-        </span>
-        <span style={{ opacity: category.name === selectedCategory ? "1" : "0.8", fontWeight: "bold"}}  >
-          {category.name}
-        </span>
+      >   {
+        collapse ? <span style={{ color: category.name === selectedCategory ? "white" : "#1b9ff1", marginRight: "15px",  }} className="gradient-text">
+        {category.icon}
+      </span> :    <><span style={{ color: category.name === selectedCategory ? "white" : "#1b9ff1", marginRight: "15px", }} className="gradient-text">
+              {category.icon}
+            </span><span style={{ opacity: category.name === selectedCategory ? "1" : "0.8", fontWeight: "bold" }}>
+                {category.name}
+              </span></>
+      }
+    
+     
       </button>
     ))}
   </div>

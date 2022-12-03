@@ -12,12 +12,12 @@ import Splash from "./components/Splash";
 import { Fade } from "react-reveal";
 const App = () => {
   const location = useLocation();
-
+  const [collapse, setCollapse] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 7000);
+    }, 6000);
   }, []);
   return isLoading ? (
     <Fade big opposite when={isLoading}>
@@ -26,9 +26,13 @@ const App = () => {
   ) : (
     <div className={"bg-slate-900 grid place-items-center "}>
       <div className={location?.pathname !== "/splash" && "max-w-[1920px]"}>
-        {location?.pathname !== "/splash" && <Navbar />}
+        {location?.pathname !== "/splash" && <Navbar collapse={collapse} />}
         <Routes>
-          <Route exact path="/" element={<Feed />} />
+          <Route
+            exact
+            path="/"
+            element={<Feed collapse={collapse} setCollapse={setCollapse} />}
+          />
           <Route path="/splash" element={<Splash />} />
           <Route path="/video/:id" element={<VideoDetail />} />
           <Route path="/channel/:id" element={<ChannelDetail />} />

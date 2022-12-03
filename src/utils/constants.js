@@ -10,28 +10,28 @@ import CheckroomIcon from "@mui/icons-material/Checkroom";
 import GraphicEqIcon from "@mui/icons-material/GraphicEq";
 import TheaterComedyIcon from "@mui/icons-material/TheaterComedy";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
-import DeveloperModeIcon from "@mui/icons-material/DeveloperMode";
+import SentimentSatisfiedAltIcon from "@mui/icons-material/SentimentSatisfiedAlt";
+import WhatshotIcon from "@mui/icons-material/Whatshot";
+import SignLanguageIcon from "@mui/icons-material/SignLanguage";
 
-export const logo = "https://i.ibb.co/s9Qys2j/logo.png";
-
+export const logo = "https://i.ibb.co/82pp1TN/image.png";
 export const categories = [
   { name: "New", icon: <HomeIcon /> },
-  { name: "Programmer Saidur", icon: <CodeIcon /> },
-  { name: "Coding", icon: <CodeIcon /> },
-  { name: "ReactJS", icon: <CodeIcon /> },
-  { name: "NextJS", icon: <CodeIcon /> },
+  { name: "Trending", icon: <WhatshotIcon /> },
   { name: "Music", icon: <MusicNoteIcon /> },
+  { name: "Programmer Saidur", icon: <SentimentSatisfiedAltIcon /> },
+  { name: "Bangladeshi", icon: <SignLanguageIcon /> },
+  { name: "Gaming", icon: <SportsEsportsIcon /> },
+  { name: "Sports", icon: <FitnessCenterIcon /> },
+  { name: "Comedy", icon: <TheaterComedyIcon /> },
   { name: "Education", icon: <SchoolIcon /> },
+  { name: "Programming", icon: <CodeIcon /> },
   { name: "Podcast", icon: <GraphicEqIcon /> },
   { name: "Movie", icon: <OndemandVideoIcon /> },
-  { name: "Gaming", icon: <SportsEsportsIcon /> },
   { name: "Live", icon: <LiveTvIcon /> },
-  { name: "Sport", icon: <FitnessCenterIcon /> },
   { name: "Fashion", icon: <CheckroomIcon /> },
   { name: "Beauty", icon: <FaceRetouchingNaturalIcon /> },
-  { name: "Comedy", icon: <TheaterComedyIcon /> },
   { name: "Gym", icon: <FitnessCenterIcon /> },
-  { name: "Crypto", icon: <DeveloperModeIcon /> },
 ];
 
 export const demoThumbnailUrl = "https://i.ibb.co/G2L2Gwp/API-Course.png";
