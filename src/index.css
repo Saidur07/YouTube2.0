@@ -182,3 +182,68 @@ a {
   box-shadow: 0px 0px 20px 1px hsla(203, 88%, 53%, 0.5);
   background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
 }
+.notfound-body {
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  background: rgb(15 23 42);
+  text-align: center;
+  color: #e0e0e0;
+  font-family: "Fira Mono", monospace;
+}
+.notfound-h1 {
+  font-size: 2.5rem;
+  font-family: "Permanent Marker", cursive;
+}
+.notfound-div {
+  transform-style: preserve-3d;
+}
+.notfound-svg {
+  width: clamp(300px, 70%, 600px);
+  height: 500px;
+}
+#rocket {
+  transform: translateY(750px);
+
+  animation: launch 2s ease-out forwards;
+}
+
+@keyframes launch {
+  from {
+    transform: translateY(750px);
+  }
+  to {
+    perspective: 500px;
+    transform: translateY(0px);
+  }
+}
+#stars {
+  animation: twinkling 2s linear;
+}
+@keyframes twinkling {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+.text {
+  opacity: 0;
+  animation: appear 1s ease-in forwards;
+  animation-delay: 1.8s;
+}
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.notfound-a {
+  color: #1b9ff1;
+  text-decoration: none;
+}

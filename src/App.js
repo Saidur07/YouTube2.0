@@ -7,6 +7,7 @@ import {
   Navbar,
   Feed,
 } from "./components";
+import NotFound from "./components/NotFound";
 import { useEffect, useState } from "react";
 import Splash from "./components/Splash";
 import { Fade } from "react-reveal";
@@ -34,9 +35,15 @@ const App = () => {
             element={<Feed collapse={collapse} setCollapse={setCollapse} />}
           />
           <Route path="/splash" element={<Splash />} />
+          <Route path="*" element={<NotFound />} />
           <Route path="/video/:id" element={<VideoDetail />} />
           <Route path="/channel/:id" element={<ChannelDetail />} />
-          <Route path="/search/:searchTerm" element={<SearchFeed />} />
+          <Route
+            path="/search/:searchTerm"
+            element={
+              <SearchFeed collapse={collapse} setCollapse={setCollapse} />
+            }
+          />
         </Routes>
       </div>
     </div>

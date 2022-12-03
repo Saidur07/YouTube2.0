@@ -4,22 +4,23 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { Link } from 'react-router-dom';
 import { demoProfilePicture } from '../utils/constants';
 
-const ChannelCard = ({ channelDetail, marginTop, shortDesc }) => {
-
+const ChannelCard = ({ channelDetail, marginTop, shortDesc, search }) => {
+console.log(channelDetail)
 return(
  
   <Box
     sx={{
       boxShadow: 'none',
-      borderRadius: '20px',
+     
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      width: { xs: '356px', md: '320px' },
+      // width: { xs: '356px', md: '320px' },
       height: '326px',
       margin: 'auto',
       marginTop,
     }}
+    className={search ? "border-y-2 border-gray-600 w-full rounded-none" : "w-[320px] rounded-3xl"}
   >
     <Link to={`/channel/${channelDetail?.id?.channelId}`}>
       <CardContent sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center',alignItems: "center", textAlign: 'center', color: '#fff' }}>
