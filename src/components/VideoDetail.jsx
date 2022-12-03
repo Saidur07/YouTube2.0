@@ -22,7 +22,6 @@ const VideoDetail = () => {
       .then((data) => setVideos(data.items))
   }, [id]);
 
-  // if(!videoDetail?.snippet) return  <VideoDetailSkeleton/>;
   if(!videoDetail?.snippet || !videos?.length) return (<div className="grid grid-cols-5 ">
   <div className="col-span-4"><VideoDetailSkeleton/> </div>
   <div className="flex justify-center items-center px-2 py-1 "  >
@@ -49,33 +48,10 @@ const VideoDetail = () => {
     </div>
      </div>)
   const { snippet: { title, channelId, channelTitle, publishedAt, description }, statistics: { viewCount, likeCount } } = videoDetail;
+
   return (
     <div className="min-h-[95vh]">
-      {!videoDetail?.snippet || !videos?.length ? <div className="grid grid-cols-5 ">
-      <div className="col-span-4"><VideoDetailSkeleton/> </div>
-      <div className="flex justify-center items-center px-2 py-1 "  >
-      <div className={ "space-y-2" } >
-  <VideoSkeleton></VideoSkeleton>
-  <VideoSkeleton></VideoSkeleton>
-  <VideoSkeleton></VideoSkeleton>
-  <VideoSkeleton></VideoSkeleton>
-  <VideoSkeleton></VideoSkeleton>
-  <VideoSkeleton></VideoSkeleton>
-  <VideoSkeleton></VideoSkeleton>
-  <VideoSkeleton></VideoSkeleton>
-  <VideoSkeleton></VideoSkeleton>
-  <VideoSkeleton></VideoSkeleton>
-  <VideoSkeleton></VideoSkeleton>
-  <VideoSkeleton></VideoSkeleton>
-  <VideoSkeleton></VideoSkeleton>
-  <VideoSkeleton></VideoSkeleton>
-  <VideoSkeleton></VideoSkeleton>
-  <VideoSkeleton></VideoSkeleton>
-  <VideoSkeleton></VideoSkeleton>
-  <VideoSkeleton></VideoSkeleton>
-  </div>)
-        </div>
-         </div> : ""}
+     
       <div className="grid grid-cols-5 ">
         
         <div className="col-span-4">
@@ -87,10 +63,10 @@ const VideoDetail = () => {
             </Typography>
             <Stack direction="row" justifyContent="space-between" sx={{ color: "#fff" }} py={1} px={2} >
               <Link to={`/channel/${channelId}`}>
-                <Typography variant={{ sm: "subtitle1", md: 'h6' }}  color="#fff" >
+                <p className="text-xl text-white font-semibold" >
                   {channelTitle}
                   <CheckCircleIcon sx={{ fontSize: "12px", color: "gray", ml: "5px" }} />
-                </Typography>
+                </p>
               </Link>
               <Stack direction="row" gap="20px" alignItems="center">
                 <Typography variant="body1" sx={{ opacity: 0.7 }}>

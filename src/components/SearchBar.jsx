@@ -18,6 +18,8 @@ const SearchBar = () => {
   };
 
   return (
+    <div>
+
     <Paper
       component='form'
       onSubmit={onhandleSubmit}
@@ -29,15 +31,18 @@ const SearchBar = () => {
       }}
     >
       <input
-        className='search-bar'
+        className='search-bar font-semibold'
         placeholder='Search...'
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
+   
       <IconButton type='submit' sx={{ p: '10px', color: '#1b9ff1' }} aria-label='search'>
         <SearchIcon />
       </IconButton>
     </Paper>
+
+    </div>
   );
 };
 
