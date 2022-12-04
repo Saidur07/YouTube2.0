@@ -5,7 +5,7 @@ const NotFound = () => {
     const location = useLocation()
     return (
         <div className='notfound-body flex items-center justify-center flex-col'>
-    <div className='notfound-div'>
+    <div className='notfound-div flex items-center justify-center'>
         <svg className='notfound-svg' width="1123" height="837" viewBox="0 0 1123 837" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="1123" height="837" fill="#003366"/>
             <g id="sky" filter="url(#filter0_d)">
