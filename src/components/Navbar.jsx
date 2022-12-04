@@ -4,8 +4,10 @@ import logo from "../images/unixube-logo.png"
 // import { logo } from "../utils/constants";
 import { SearchBar } from "./";
 
-const Navbar = ({collapse}) => (
-  <div className="w-full sticky top-0 flex items-center justify-between  py-6" >
+const Navbar = ({collapse}) =>{
+ 
+  return (
+  <div className="w-full sticky top-0 flex items-center justify-between bgs-[#d6dfe60a] rounded-b-3xl  px-2  py-6" >
     <Link to="/" style={{ display: "flex", alignItems: "center" }}>
     <div  className='items-center justify-center flex '>
         
@@ -18,6 +20,6 @@ const Navbar = ({collapse}) => (
     </Link>
     <SearchBar />
   </div>
-);
+)};
 
 export default Navbar;

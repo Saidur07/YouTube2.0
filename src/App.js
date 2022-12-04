@@ -13,7 +13,7 @@ import Splash from "./components/Splash";
 import { Fade } from "react-reveal";
 const App = () => {
   const location = useLocation();
-  const [collapse, setCollapse] = useState(false);
+  const [collapse, setCollapse] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     setTimeout(() => {
@@ -25,7 +25,7 @@ const App = () => {
       <Splash></Splash>
     </Fade>
   ) : (
-    <div className={"bg-slate-900 flex items-center justify-center "}>
+    <div className={"bg-slate-900  flex items-center justify-center "}>
       <div className={location?.pathname !== "/splash" && "max-w-[1920px]"}>
         {location?.pathname !== "/splash" && <Navbar collapse={collapse} />}
         <Routes>

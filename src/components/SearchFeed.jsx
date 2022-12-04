@@ -18,7 +18,7 @@ const SearchFeed = ({setCollapse, collapse}) => {
 
   return (
     <div className="flex flex-row h-[91vh]">
-    <div className={`h-[91vh] border-r mr-2 border-[#3d3d3d] px-4 relative ${collapse ? "w-24" : "w-[340px]"} transition-all duration-150 ease-in-out`} >
+    <div className={`h-[91vh]  bg-[#d6dfe60a] mr-2  px-4 relative ${collapse ? "w-24" : "w-[340px]"} transition-all duration-150 ease-in-out`} >
       <Sidebar selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} collapse={collapse}/>
        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={`w-6 h-6 absolute top-[10vh] -right-3 hover:bg-slate-600 bg-gray-800 cursor-pointer text-slate-300 rounded-full border-gray-700 border  transition-all ${collapse ? "rotate-180" : "rotate-0"} duration-150 ease-out`} onClick={()=> setCollapse(!collapse)}>
 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
