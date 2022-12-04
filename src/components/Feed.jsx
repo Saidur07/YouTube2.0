@@ -15,11 +15,11 @@ const Feed = ({setCollapse, collapse}) => {
     fetchFromAPI(`search?part=snippet&q=${selectedCategory}`)
       .then((data) => setVideos(data.items))
     }, [selectedCategory]);
-    if (videos === null) {
-    setTimeout(() => {
-        navigate("/quota-exceeded")
-      }, 10000)
-    }
+    // if (videos === null) {
+    // setTimeout(() => {
+    //     navigate("/quota-exceeded")
+    //   }, 10000)
+    // }
   return (
     <div className="flex flex-row">
       <div className={`h-[91vh] border-r mr-2 border-[#3d3d3d] px-4 relative ${collapse ? "w-24" : "w-[340px]"} transition-all duration-150 ease-in-out`} >

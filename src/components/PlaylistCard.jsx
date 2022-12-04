@@ -2,10 +2,10 @@ import React from 'react'
 import { Link } from "react-router-dom"; 
 import { Typography, Card, CardContent, CardMedia } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-
+import PlaylistPlayIcon from '@mui/icons-material/PlaylistPlay';
 import { demoThumbnailUrl, demoVideoUrl,  demoChannelUrl, demoChannelTitle } from "../utils/constants";
 
-const SearchVideoCard = ({ video: { id: { videoId }, snippet } }) => {
+const VideoCard = ({ video: { id: {  videoId }, snippet } }) => {
   var currentDate = new Date().toISOString();
 
   const date2 = snippet?.publishTime
@@ -15,21 +15,25 @@ const SearchVideoCard = ({ video: { id: { videoId }, snippet } }) => {
   const diffInMilliseconds = new Date(currentDate).getTime() - new Date(date2).getTime()
   const diffInDays = diffInMilliseconds / DAY_UNIT_IN_MILLISECONDS
   return(
-    <Link to={videoId ? `/video/${videoId}` : `/video/cV2gBU6hKfY` }>
-  <div  className="card-glass w-[60vw]  cursor-pointer flex bg-slate-900  ">
-     
-      <CardMedia image={snippet?.thumbnails?.high?.url || demoThumbnailUrl} alt={snippet?.title} 
+  <Card sx={{ width: { xs: '100%', sm: '358px', md: "330px", }, boxShadow: "none", borderRadius: 0 }} className="group cursor-pointer">
+    <Link to={videoId ? `/video/${videoId}` : `/video/cV2gBU6hKfY` } className="relative "> 
+      
+       <CardMedia image={snippet?.thumbnails?.high?.url || demoThumbnailUrl} alt={snippet?.title}  className=""
         sx={{ width: { xs: '100%', sm: '358px'}, height: 180 }} 
       />
-    
-    <CardContent sx={{  height: '130px' }} className="">
+    <div className='w-full bg-slate-900 bg-opacity-70 h-10 group-hover:h-full text-white grid place-items-center transition-all text-3xl group-hover:text-5xl  absolute bottom-0'>
+    <PlaylistPlayIcon  fontSize="inherit"/>
+    </div>
+    </Link>
+    <CardContent sx={{  height: '130px' }} className="bg-slate-900 ">
       <Link to={videoId ? `/video/${videoId}` : demoVideoUrl } >
         <Typography variant="subtitle1" fontWeight="bold" color="#FFF">
-         { snippet?.title}
+         { snippet?.title?.length > 60 ? snippet?.title.slice(0, 60) + "..." : snippet?.title  }
         </Typography>
       </Link>
       <Link to={snippet?.channelId ? `/channel/${snippet?.channelId}` : demoChannelUrl} >
-        <Typography variant="subtitle2" color="gray">
+        <Typography variant="subtitle2" className='text-gray-300'>
+            <span className='text-gray-500 '>Playlist by</span> {" "}
           {snippet?.channelTitle || demoChannelTitle}
           <CheckCircleIcon sx={{ fontSize: "12px", color: "gray", ml: "5px" }} />
          {" "}・{" "}{
@@ -40,8 +44,7 @@ const SearchVideoCard = ({ video: { id: { videoId }, snippet } }) => {
         </Typography>
       </Link>
     </CardContent>
-  </div>
-  </Link>
+  </Card>
 )};
 
-export default SearchVideoCard
+export default VideoCard

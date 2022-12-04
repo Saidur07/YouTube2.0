@@ -15,17 +15,17 @@ const VideoCard = ({ video: { id: { videoId }, snippet } }) => {
   const diffInMilliseconds = new Date(currentDate).getTime() - new Date(date2).getTime()
   const diffInDays = diffInMilliseconds / DAY_UNIT_IN_MILLISECONDS
   return(
-  <Card sx={{ width: { xs: '100%', sm: '358px', md: "330px", }, boxShadow: "none", borderRadius: 0 }} className="card-glass">
+  <Card sx={{ width: { xs: '100%', sm: '358px', md: "330px", }, boxShadow: "none", borderRadius: 0 }} className="cursor-pointer ">
     <Link to={videoId ? `/video/${videoId}` : `/video/cV2gBU6hKfY` }>
       <CardMedia image={snippet?.thumbnails?.high?.url || demoThumbnailUrl} alt={snippet?.title} 
         sx={{ width: { xs: '100%', sm: '358px'}, height: 180 }} 
       />
     </Link>
     
-    <CardContent sx={{  height: '130px' }} className="bg-[#202020] backdrop-blur-2xl">
+    <CardContent sx={{  height: '130px' }} className=" bg-slate-900 ">
       <Link to={videoId ? `/video/${videoId}` : demoVideoUrl } >
-        <Typography variant="subtitle1" fontWeight="bold" color="#FFF">
-         { snippet?.title?.length > 60 ? snippet?.title.slice(0, 60) + "..." : snippet?.title  }
+        <Typography variant="subtitle1" fontWeight="bold" color="#fff">
+         { snippet?.title?.length > 70 ? snippet?.title.slice(0, 70) + "..." : snippet?.title  }
         </Typography>
       </Link>
       <Link to={snippet?.channelId ? `/channel/${snippet?.channelId}` : demoChannelUrl} >

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { demoProfilePicture } from '../utils/constants';
 
 const ChannelCard = ({ channelDetail, marginTop, shortDesc, search }) => {
-console.log(channelDetail)
+
 return(
  
   <Box
