@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 import { fetchFromAPI } from "../utils/fetchFromAPI";
 import { Videos, Sidebar } from "./";
+import axios from "axios";
+
 
 const Feed = ({setCollapse, collapse}) => {
   const [selectedCategory, setSelectedCategory] = useState("New");
@@ -13,13 +15,15 @@ const Feed = ({setCollapse, collapse}) => {
     setVideos(null);
 
     fetchFromAPI(`search?part=snippet&q=${selectedCategory}`)
-      .then((data) => setVideos(data.items))
-    }, [selectedCategory]);
-    // if (videos === null) {
-    // setTimeout(() => {
-    //     navigate("/quota-exceeded")
-    //   }, 10000)
-    // }
+      .then((data) =>  {if(data?.response?.status === 429 ){
+        navigate("/quota-exceeded")
+      }else{
+setVideos(data?.item)
+      }})
+    }, [navigate, selectedCategory]);
+   
+ 
+   
   return (
     <div className="flex flex-row ">
       <div className={`h-[91vh]  mr-2  bg-[#d6dfe60a] px-4 relative ${collapse ? "w-24" : "w-[340px]"} transition-all duration-150 ease-in-out`} >
