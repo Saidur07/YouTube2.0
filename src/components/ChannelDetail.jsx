@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { Box } from "@mui/material";
-
+import {  useParams } from "react-router-dom";
+import { Box, CardMedia, Tabs, Tab } from "@mui/material";
 import { Videos, ChannelCard, Sidebar } from "./";
 import { fetchFromAPI } from "../utils/fetchFromAPI";
-
 const ChannelDetail = ({setCollapse, collapse}) => {
   const [channelDetail, setChannelDetail] = useState();
   const [selectedCategory, setSelectedCategory] = useState("New");
   const [videos, setVideos] = useState(null);
+  const [tabIndex, setTabIndex] = useState(0);
 
+  const handleTabChange = (event, newTabIndex) => {
+    setTabIndex(newTabIndex);
+  };
   const { id } = useParams();
 
   useEffect(() => {
@@ -41,20 +43,48 @@ console.log(channelDetail)
         
       </div>
 
-      <div className="p-2 overflow-auto h-[91vh] flex-1" >
+      <div className="p-2 overflow-auto h-[91vh] flex-1 min-w-[75vw]" >
       <div>
-        <div className="h-[300px] bg-black z-10" 
-       /*  style={{
-          height:'300px',
-          background: 'linear-gradient(90deg, rgba(0,238,247,1) 0%, rgba(206,3,184,1) 100%, rgba(0,212,255,1) 100%)',
-          zIndex: 10,
-        }} */ 
-        />
-        <ChannelCard channelDetail={channelDetail} shortDesc={true} marginTop="-93px" />
+        <div className="h-[400px] -z-0 rounded-lg flex items-center justify-center  group" 
+        style={{background: 'linear-gradient(315deg, hsla(222, 47%, 11%, 1) 0%, hsla(201, 91%, 54%, 1) 100%, hsla(240, 90%, 61%, 1) 100%',
+     
+        }} 
+        ><CardMedia
+        image={channelDetail?.brandingSettings?.image?.bannerExternalUrl }
+        alt={channelDetail?.snippet?.title}
+        sx={{  height: '100%', width: '100%', borderRadius: "8px"  }}
+
+      />  
       </div>
+
+        <ChannelCard channelDetail={channelDetail} shortDesc={true} detailed={true} marginTop="-93px" />
+    <Box sx={{ width: '100%' }} className="text-white mb-4">
+    <Tabs value={tabIndex} onChange={handleTabChange} sx={{
+            '& .MuiTabs-indicator': { backgroundColor:  "#1b9ff1"},
+            '& .MuiTab-root': { color: "#a5a5a5" },
+            '& .Mui-selected': { color:  "#f9f9f9"},
+          }}>
+        <Tab label="Videos" />
+        <Tab label="About" />
+        <Tab label="Stats" />
+      </Tabs>
+    </Box>
+      </div>
+      {tabIndex === 0 && (
       <Box p={2} display="flex">
-        <Videos videos={videos} />
-      </Box>
+            <Videos videos={videos} />
+          </Box>
+        )}
+      {tabIndex === 1 && (
+      <Box p={2} display="flex">
+            <Videos videos={videos} />
+          </Box>
+        )}
+      {tabIndex === 2 && (
+      <Box p={2} display="flex">
+            <Videos videos={videos} />
+          </Box>
+        )}
     
     </div>
     
