@@ -66,7 +66,6 @@ console.log(channelDetail)
           }}>
         <Tab label="Videos" />
         <Tab label="About" />
-        <Tab label="Stats" />
       </Tabs>
     </Box>
       </div>
@@ -75,15 +74,30 @@ console.log(channelDetail)
             <Videos videos={videos} />
           </Box>
         )}
+     
       {tabIndex === 1 && (
-      <Box p={2} display="flex">
-            <Videos videos={videos} />
-          </Box>
-        )}
-      {tabIndex === 2 && (
-      <Box p={2} display="flex">
-            <Videos videos={videos} />
-          </Box>
+      <div  className="p-2 ">
+           <p className="text-white text-xl font-semibold mb-4"> <span style={{ color: "#fff" }} className="gradient-text">{channelDetail?.snippet?.title}</span> </p>
+              <div className="flex  justify-start">
+              <div className="w-1/2 px-6"><p className="text-white text-xl">Description</p>
+              <p className="text-gray-400 my-4 text-sm w-[600px]">{(channelDetail?.snippet?.description)}</p>
+              </div>
+              <div className="w-1/2 border-l px-6">
+                
+              <p className="text-gray-300 my-4 text-sm">Country origin : <span className="font-semibold text-md text-white">  {channelDetail?.snippet?.country}</span></p>
+                
+              <p className="text-gray-300 my-4 text-sm">Custom URL : <span className="font-semibold text-md text-white"> { channelDetail?.snippet?.customUrl}</span></p>
+                
+              <p className="text-gray-300 my-4 text-sm">Publishing Date : <span className="font-semibold text-md text-white">  {(channelDetail?.snippet?.publishedAt).slice(0,10)}</span></p>
+                
+              <p className="text-gray-300 my-4 text-sm">Total Videos : <span className="font-semibold text-md text-white">  {(channelDetail?.statistics?.videoCount).toLocaleString('en-US')}</span></p>
+                
+              <p className="text-gray-300 my-4 text-sm">Total Subscribers : <span className="font-semibold text-md text-white">  {(channelDetail?.statistics?.subscriberCount).toLocaleString('en-US')}</span></p>
+                
+              <p className="text-gray-300 my-4 text-sm">Total Views : <span className="font-semibold text-md text-white">  {(channelDetail?.statistics?.viewCount).toLocaleString('en-US')}</span></p>
+              </div>
+                     </div>
+          </div>
         )}
     
     </div>

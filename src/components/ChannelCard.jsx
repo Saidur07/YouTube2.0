@@ -45,8 +45,9 @@ return(
         </Typography>
         {channelDetail?.statistics?.subscriberCount && (
           <Typography sx={{ fontSize: '15px', fontWeight: 500, color: 'gray' }}>
-            {parseInt(channelDetail?.statistics?.subscriberCount) > 1000 ? parseInt(channelDetail?.statistics?.subscriberCount / 1000).toLocaleString('en-US')  +"K" : parseInt(channelDetail?.statistics?.subscriberCount).toLocaleString('en-US')} Subscribers
+            {parseFloat(channelDetail?.statistics?.subscriberCount).toFixed(1) > 1000000 ?parseFloat(channelDetail?.statistics?.subscriberCount / 1000000).toFixed(1) +"M" :parseFloat(channelDetail?.statistics?.subscriberCount).toFixed(1) > 1000 ? parseFloat(channelDetail?.statistics?.subscriberCount / 1000).toFixed(1)+"K" : parseFloat(channelDetail?.statistics?.subscriberCount).toLocaleString('en-US') } Subscribers
           </Typography>
+          
         )}
           
       </CardContent>
