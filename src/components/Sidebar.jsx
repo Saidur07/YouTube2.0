@@ -13,7 +13,7 @@ const Categories = ({ selectedCategory, setSelectedCategory, collapse,  }) => {
  
     {categories.map((category) => (
       <button
-        className="category-btn "
+        className={`category-btn  `}
         onClick={() => {
         if (location?.pathname !== "/") {
           navigate("/")
@@ -28,7 +28,7 @@ const Categories = ({ selectedCategory, setSelectedCategory, collapse,  }) => {
         }}
         key={category.name}
       >   {
-        collapse ? <span style={{ color: category.name === selectedCategory ? "white" : "#1b9ff1", marginRight: "15px",  }} className="gradient-text">
+        collapse ? <span style={{ color: category.name === selectedCategory ? "white" : "#1b9ff1",   }} className="gradient-text">
         {category.icon}
       </span> :    <><span style={{ color: category.name === selectedCategory ? "white" : "#1b9ff1", marginRight: "15px", }} className="gradient-text">
               {category.icon}

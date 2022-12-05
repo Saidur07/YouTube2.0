@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom"; 
-import { Typography, Card, CardContent, CardMedia } from "@mui/material";
+import { Typography,  CardContent, CardMedia } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import { demoThumbnailUrl, demoVideoUrl,  demoChannelUrl, demoChannelTitle } from "../utils/constants";
@@ -23,7 +23,7 @@ const SearchVideoCard = ({ video: { id: { videoId }, snippet } }) => {
       <CardMedia image={snippet?.thumbnails?.high?.url || demoThumbnailUrl} alt={snippet?.title}  className=""
        sx={{ width: { xs: '100%', sm: '358px'}, height: 180 }} 
      />
-   <div className='w-[30%] group-hover:bg-slate-900 bg-opacity-50  flex h-0 group-hover:h-10 text-transparent group-hover:text-slate-300  items-center justify-center rounded-bl-xl transition-all text-3xl  absolute top-0 left-0'> 
+   <div className='w-[30%] group-hover:bg-slate-900 bg-opacity-50  flex h-0 group-hover:h-10 text-transparent group-hover:text-slate-300  items-center justify-center rounded-br-xl transition-all text-3xl  absolute top-0 left-0'> 
    <PlayArrowIcon  fontSize="inherit"/>
   
    <span className='text-lg'> Play</span>

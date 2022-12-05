@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Typography, Card, CardContent, CardMedia } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import Fade from 'react-reveal/Fade';
 import { demoThumbnailUrl, demoVideoUrl,  demoChannelUrl, demoChannelTitle } from "../utils/constants";
 
 const VideoCard = ({ video: { id: { videoId }, snippet } }) => {
@@ -16,6 +17,7 @@ const VideoCard = ({ video: { id: { videoId }, snippet } }) => {
   const diffInDays = diffInMilliseconds / DAY_UNIT_IN_MILLISECONDS
   return(
     <Link to={videoId ? `/video/${videoId}` : `/video/cV2gBU6hKfY` } className="group transition-all">
+       
   <Card sx={{ width: { xs: '100%', sm: '358px', md: "330px", }, boxShadow: "none", borderRadius: 0 }} className="cursor-pointer ">
   <Link to={videoId ? `/video/${videoId}` : `/video/cV2gBU6hKfY` } className="relative "> 
       

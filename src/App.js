@@ -37,7 +37,12 @@ const App = () => {
           <Route path="/splash" element={<Splash />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/video/:id" element={<VideoDetail />} />
-          <Route path="/channel/:id" element={<ChannelDetail />} />
+          <Route
+            path="/channel/:id"
+            element={
+              <ChannelDetail collapse={collapse} setCollapse={setCollapse} />
+            }
+          />
           <Route
             path="/search/:searchTerm"
             element={
