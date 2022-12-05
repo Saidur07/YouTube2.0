@@ -3,12 +3,13 @@ import { Link, useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
 import { Typography, Box, Stack } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-
 import { Videos, Loader } from "./";
 import VideoDetailSkeleton from "./VideoDetailSkeleton"
 import { fetchFromAPI } from "../utils/fetchFromAPI";
 import VideoSkeleton from "./VideoSkeleton";
-
+import StreetviewIcon from '@mui/icons-material/Streetview';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import CommentIcon from '@mui/icons-material/Comment';
 const VideoDetail = () => {
   const [videoDetail, setVideoDetail] = useState(null);
   const [videos, setVideos] = useState(null);
@@ -47,8 +48,8 @@ const VideoDetail = () => {
 </div>)
     </div>
      </div>)
-  const { snippet: { title, channelId, channelTitle, publishedAt, description }, statistics: { viewCount, likeCount } } = videoDetail;
-
+  const { snippet: { title, channelId, channelTitle, publishedAt, description }, statistics: { viewCount, likeCount, commentCount } } = videoDetail;
+console.log(videoDetail)
   return (
     <div className="min-h-[95vh]">
      
@@ -63,17 +64,24 @@ const VideoDetail = () => {
             </Typography>
             <Stack direction="row" justifyContent="space-between" sx={{ color: "#fff" }} py={1} px={2} >
               <Link to={`/channel/${channelId}`}>
-                <p className="text-xl text-white font-semibold" >
+                <p className="text-xl text-white font-bold flex items-center justify-center" >
+                  <div className="w-10 h-10 rounded-full bg-white mx-2"></div>
                   {channelTitle}
                   <CheckCircleIcon sx={{ fontSize: "12px", color: "gray", ml: "5px" }} />
                 </p>
               </Link>
               <Stack direction="row" gap="20px" alignItems="center">
                 <Typography variant="body1" sx={{ opacity: 0.7 }}>
-                  {parseInt(viewCount).toLocaleString()} views
+                  <StreetviewIcon className="mx-2"/>
+                  {parseInt(viewCount).toLocaleString().toLocaleString('en-US')} views
                 </Typography>
                 <Typography variant="body1" sx={{ opacity: 0.7 }}>
-                  {parseInt(likeCount).toLocaleString()} likes
+                  <ThumbUpIcon className="mx-2"/>
+                  {parseInt(likeCount).toLocaleString().toLocaleString('en-US')} likes
+                </Typography>
+                <Typography variant="body1" sx={{ opacity: 0.7 }}>
+                  <CommentIcon className="mx-2"/>
+                  {parseInt(commentCount).toLocaleString().toLocaleString('en-US')} Comments
                 </Typography>
               </Stack>
             </Stack>
