@@ -79,15 +79,15 @@ console.log(videoDetail)
               </Link>
               <Stack direction="row" gap="20px" alignItems="center">
                 <Typography variant="body1" sx={{ opacity: 0.7 }}>
-                  <StreetviewIcon className="mx-2"/>
+                  <StreetviewIcon className="cursor-pointer mx-2"/>
                   {parseInt(viewCount).toLocaleString().toLocaleString('en-US')} views
                 </Typography>
                 <Typography variant="body1" sx={{ opacity: 0.7 }}>
-                  <ThumbUpIcon className="mx-2"/>
+                  <ThumbUpIcon className="cursor-pointer mx-2"/>
                   {parseInt(likeCount).toLocaleString().toLocaleString('en-US')} likes
                 </Typography>
                 <Typography variant="body1" sx={{ opacity: 0.7 }}>
-                  <CommentIcon className="mx-2"/>
+                  <CommentIcon className="cursor-pointer mx-2"/>
                   {parseInt(commentCount).toLocaleString().toLocaleString('en-US')} Comments
                 </Typography>
               </Stack>

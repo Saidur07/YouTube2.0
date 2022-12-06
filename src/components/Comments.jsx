@@ -44,7 +44,7 @@ const Comments = ({videoID}) => {
                 </p>
                 </Link>
                <div className='my-2'>
-                 <p className='text-gray-300 mx-4 '>{snippet?.textDisplay}</p>
+                 <p className='text-gray-300 mx-4  max-w-[70vw]'>{snippet?.textDisplay}</p>
                 <Stack direction="row" gap="20px" alignItems="center" className="mt-2 ">
              
                 <Typography variant="body1" sx={{ opacity: 0.7, color: "white" }}>
