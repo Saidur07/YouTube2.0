@@ -58,7 +58,7 @@ const VideoDetail = () => {
   const diffInDays = diffInMilliseconds / DAY_UNIT_IN_MILLISECONDS
 console.log(videoDetail)
   return (
-    <div className="min-h-[95vh]">
+    <div className="min-h-[95vh] w-full">
      
       <div className="2xl:grid grid-cols-5 ">
         
@@ -106,7 +106,7 @@ console.log(videoDetail)
              ""
           } </p>
             </div>
-<p className="my-4 2xl:max-w-[70vw] ">{!showMore && description?.length > 500 ?  `${description?.slice(0,500)} ...` :description }</p>
+<p className="my-4 2xl:max-w-[70vw] break-words">{!showMore && description?.length > 500 ?  `${description?.slice(0,500)} ...` :description }</p>
 <p className="font-semibold cursor-pointer hover:bg-[#d6dfe631] inline p-1 rounded-lg transition-all duration-150" onClick={()=>setShowMore(!showMore)}>{description?.length > 500 && !showMore ? "Show more" :description?.length < 500 ? "" : "Show less" }</p>
            </div>
           </Box>
