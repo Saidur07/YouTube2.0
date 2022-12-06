@@ -25,8 +25,8 @@ const VideoDetail = () => {
       .then((data) => setVideos(data.items))
   }, [id]);
 
-  if(!videoDetail?.snippet || !videos?.length) return (<div className="grid grid-cols-5 ">
-  <div className="col-span-4"><VideoDetailSkeleton/> </div>
+  if(!videoDetail?.snippet || !videos?.length) return (<div className="2xl:grid grid-cols-5  ">
+  <div className="2xl:col-span-4 2xl:mr-2"><VideoDetailSkeleton/> </div>
   <div className="flex justify-center items-center px-2 py-1 "  >
   <div className={ "space-y-2" } >
 <VideoSkeleton></VideoSkeleton>
@@ -62,17 +62,17 @@ console.log(videoDetail)
      
       <div className="2xl:grid grid-cols-5 ">
         
-        <div className="2xl:col-span-4">
+        <div className="2xl:col-span-4 2xl:mr-2">
      
           <Box sx={{ width: "100%", position: "sticky", top: "86px" }}>
             <ReactPlayer url={`https://www.youtube.com/watch?v=${id}`} className="react-player" controls />
             <Typography color="#fff" variant="h5" fontWeight="bold" p={2}>
               {title}
             </Typography>
-            <Stack direction="row" justifyContent="space-between" sx={{ color: "#fff" }} py={1} px={2} >
+            <div className="flex flex-col md:flex-row md:justify-between text-white py-1 px-2 space-y-4 md:space-y-0"  >
               <Link to={`/channel/${channelId}`}>
-                <p className="text-xl text-white font-bold flex items-center justify-center" >
-                  <div className="w-10 h-10 rounded-full bg-white mx-2"></div>
+                <p className="text-xl text-white font-bold flex items-center  md:justify-center" >
+                  <div className="w-10 h-10 rounded-full bg-white mx-2 "></div>
                   {channelTitle}
                   <CheckCircleIcon sx={{ fontSize: "12px", color: "gray", ml: "5px" }} />
                 </p>
@@ -91,8 +91,8 @@ console.log(videoDetail)
                   {parseInt(commentCount).toLocaleString().toLocaleString('en-US')} Comments
                 </Typography>
               </Stack>
-            </Stack>
-           <div className="w-full bg-[#d6dfe631] transition-all hover:bg-[#e5e9ec46] shadow-md text-gray-300 rounded-lg my-4 cursor-pointer p-4" onClick={()=>setShowMore(!showMore)}>
+            </div>
+           <div className="w-full bg-[#d6dfe631] transition-all hover:bg-[#e5e9ec46] shadow-md text-gray-300 rounded-lg my-4 cursor-pointer p-4 mx-2" onClick={()=>setShowMore(!showMore)}>
             <div className="flex">
             <p>{viewCount && (
           <Typography sx={{ fontSize: '16px', fontWeight: 600,  }}>
@@ -106,14 +106,19 @@ console.log(videoDetail)
              ""
           } </p>
             </div>
-<p className="my-4 max-w-[70vw]">{!showMore && description?.length > 500 ?  `${description?.slice(0,500)} ...` :description }</p>
+<p className="my-4 2xl:max-w-[70vw] ">{!showMore && description?.length > 500 ?  `${description?.slice(0,500)} ...` :description }</p>
 <p className="font-semibold cursor-pointer hover:bg-[#d6dfe631] inline p-1 rounded-lg transition-all duration-150" onClick={()=>setShowMore(!showMore)}>{description?.length > 500 && !showMore ? "Show more" :description?.length < 500 ? "" : "Show less" }</p>
            </div>
           </Box>
           <Comments videoID={videoDetail?.id}></Comments>
         </div>
+        <div>
+        <p className="text-3xl font-bold mb-2 text-white">
+          <span style={{ color: "#1b9ff1" }} className="gradient-text">Related</span> videos
+        </p>
         <div className="flex justify-center items-center px-2 py-1 "  >
           <Videos videos={videos} single={true} loading={false}/>
+        </div>
         </div>
       </div>
     </div>
