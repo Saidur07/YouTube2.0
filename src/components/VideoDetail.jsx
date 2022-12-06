@@ -13,6 +13,7 @@ import CommentIcon from '@mui/icons-material/Comment';
 const VideoDetail = () => {
   const [videoDetail, setVideoDetail] = useState(null);
   const [videos, setVideos] = useState(null);
+  const [showMore, setShowMore] = useState(false)
   const { id } = useParams();
 
   useEffect(() => {
@@ -49,6 +50,11 @@ const VideoDetail = () => {
     </div>
      </div>)
   const { snippet: { title, channelId, channelTitle, publishedAt, description }, statistics: { viewCount, likeCount, commentCount } } = videoDetail;
+  var currentDate = new Date().toISOString();
+  const date2 = publishedAt
+  const DAY_UNIT_IN_MILLISECONDS = 24 * 3600 * 1000
+  const diffInMilliseconds = new Date(currentDate).getTime() - new Date(date2).getTime()
+  const diffInDays = diffInMilliseconds / DAY_UNIT_IN_MILLISECONDS
 console.log(videoDetail)
   return (
     <div className="min-h-[95vh]">
@@ -85,6 +91,23 @@ console.log(videoDetail)
                 </Typography>
               </Stack>
             </Stack>
+           <div className="w-full bg-[#d6dfe631] transition-all hover:bg-[#e5e9ec46] shadow-md text-gray-300 rounded-lg my-4 cursor-pointer p-4" onClick={()=>setShowMore(!showMore)}>
+            <div className="flex">
+            <p>{viewCount && (
+          <Typography sx={{ fontSize: '16px', fontWeight: 600,  }}>
+            {parseFloat(viewCount).toFixed(1) > 1000000 ?parseFloat(viewCount / 1000000).toFixed(1) +"M" :parseFloat(viewCount).toFixed(1) > 1000 ? parseFloat(viewCount / 1000).toFixed(1)+"K" : parseFloat(viewCount).toLocaleString('en-US') } Views
+          </Typography>
+          
+        )}</p>{" "}・{" "}
+            <p className="text-base font-semibold text-gray-300">{
+            Math.round(diffInDays) < 1 ?
+             "Today"  :  Math.round(diffInDays) === 1 ? "Yesterday" :Math.round(diffInDays) < 29 ? Math.round(diffInDays) + " Days ago" :Math.round(diffInDays) < 365 ? Math.round(Math.round(diffInDays) / 30) + ` ${Math.round(Math.round(diffInDays) / 30) <= 1 ? " Month" : " Months"} ago` :Math.round(diffInDays) > 365 ? Math.round(Math.round(diffInDays) / 365) + `${Math.round(Math.round(diffInDays) / 365) <= 1 ? " Year" : " Years"}  ago` :
+             ""
+          } </p>
+            </div>
+<p className="my-4 max-w-[70vw]">{!showMore && description?.length > 500 ?  `${description?.slice(0,500)} ...` :description }</p>
+<p className="font-semibold cursor-pointer hover:bg-[#d6dfe631] inline p-1 rounded-lg transition-all duration-150" onClick={()=>setShowMore(!showMore)}>{description?.length > 500 && !showMore ? "Show more" :description?.length < 500 ? "" : "Show less" }</p>
+           </div>
           </Box>
         </div>
         <div className="flex justify-center items-center px-2 py-1 "  >
