@@ -1,11 +1,11 @@
 import React from 'react'
 import { Link } from "react-router-dom"; 
-import { Typography,  CardContent, CardMedia } from "@mui/material";
+import { Typography, Card, CardContent, CardMedia } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import { demoThumbnailUrl, demoVideoUrl,  demoChannelUrl, demoChannelTitle } from "../utils/constants";
 
-const SearchVideoCard = ({ video: { id: { videoId }, snippet } }) => {
+const VideoCard = ({ video: { id: { videoId }, snippet } }) => {
   var currentDate = new Date().toISOString();
 
   const date2 = snippet?.publishTime
@@ -15,25 +15,24 @@ const SearchVideoCard = ({ video: { id: { videoId }, snippet } }) => {
   const diffInMilliseconds = new Date(currentDate).getTime() - new Date(date2).getTime()
   const diffInDays = diffInMilliseconds / DAY_UNIT_IN_MILLISECONDS
   return(
-    <Link to={videoId ? `/video/${videoId}` : `/video/cV2gBU6hKfY` } className="group">
-  <div  className=" lg:w-[60vw]  cursor-pointer flex flex-col lg:flex-row bg-slate-900  ">
-     
+    <Link to={videoId ? `/video/${videoId}` : `/video/cV2gBU6hKfY` } className="group transition-all">
+       
+  <Card sx={{ width: { xs: '100%', sm: '358px', md: "330px", }, boxShadow: "none", borderRadius: 0 }} className="cursor-pointer ">
   <Link to={videoId ? `/video/${videoId}` : `/video/cV2gBU6hKfY` } className="relative "> 
       
       <CardMedia image={snippet?.thumbnails?.high?.url || demoThumbnailUrl} alt={snippet?.title}  className=""
        sx={{ width: { xs: '100%', sm: '358px'}, height: 180 }} 
      />
-   <div className='w-[30%] group-hover:bg-slate-900 bg-opacity-50  flex h-0 group-hover:h-10 text-transparent group-hover:text-slate-300  items-center justify-center rounded-br-xl transition-all text-3xl  absolute top-0 left-0'> 
+   <div className='w-[30%] group-hover:bg-slate-900 bg-opacity-50  flex h-0 group-hover:h-10 text-transparent group-hover:text-slate-300  items-center justify-center rounded-bl-xl transition-all text-3xl  absolute top-0 right-0'> 
    <PlayArrowIcon  fontSize="inherit"/>
   
    <span className='text-lg'> Play</span>
    </div>
    </Link>
-    
-    <CardContent sx={{  height: '130px' }} className="">
+    <CardContent sx={{  height: '130px' }} className=" bg-slate-900 ">
       <Link to={videoId ? `/video/${videoId}` : demoVideoUrl } >
-        <Typography variant="subtitle1" fontWeight="bold" color="#FFF">
-         { snippet?.title}
+        <Typography variant="subtitle1" fontWeight="bold" color="#fff">
+         { snippet?.title?.length > 70 ? snippet?.title.slice(0, 70) + "..." : snippet?.title  }
         </Typography>
       </Link>
       <Link to={snippet?.channelId ? `/channel/${snippet?.channelId}` : demoChannelUrl} >
@@ -48,8 +47,8 @@ const SearchVideoCard = ({ video: { id: { videoId }, snippet } }) => {
         </Typography>
       </Link>
     </CardContent>
-  </div>
+  </Card>
   </Link>
 )};
 
-export default SearchVideoCard
+export default VideoCard

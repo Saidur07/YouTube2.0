@@ -25,10 +25,10 @@ const Feed = ({setCollapse, collapse}) => {
    
    console.log(videos)
   return (
-    <div className="flex flex-row ">
-      <div className={`h-[91vh]  mr-2  bg-[#d6dfe60a] px-4 relative ${collapse ? "w-24" : "w-[340px]"} transition-all duration-150 ease-in-out`} >
+    <div className="flex lg:flex-row flex-col ">
+      <div className={`lg:h-[91vh]  mr-2  bg-[#d6dfe60a] px-4 relative ${collapse ? "lg:w-24" : "lg:w-[340px]"} transition-all duration-150 ease-in-out`} >
         <Sidebar selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} collapse={collapse}/>
-         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={`w-6 h-6 absolute top-[10vh] -right-3 hover:bg-slate-600 bg-gray-800 cursor-pointer text-slate-300 rounded-full border-gray-700 border  transition-all ${collapse ? "rotate-180" : "rotate-0"} duration-150 ease-out`} onClick={()=> setCollapse(!collapse)}>
+         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={`w-6 h-6 absolute top-[10vh] -right-3 hover:bg-slate-600 bg-gray-800 cursor-pointer text-slate-300 rounded-full border-gray-700 border  transition-all hidden lg:block ${collapse ? "rotate-180" : "rotate-0"} duration-150 ease-out`} onClick={()=> setCollapse(!collapse)}>
   <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
 </svg>
     {
@@ -44,7 +44,7 @@ const Feed = ({setCollapse, collapse}) => {
           <span style={{ color: "#1b9ff1" }} className="gradient-text">{selectedCategory}</span> videos
         </p>
 
-        <Videos videos={videos} />
+        <Videos videos={videos} collapse={collapse}/>
       </div>
     </div>
   );

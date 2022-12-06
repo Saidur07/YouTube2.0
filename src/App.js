@@ -20,13 +20,20 @@ const App = () => {
       setIsLoading(false);
     }, 6000);
   }, []);
+  console.log(location?.pathname?.includes("/video/"));
   return isLoading ? (
     <Fade big opposite when={isLoading}>
       <Splash></Splash>
     </Fade>
   ) : (
     <div className={"bg-slate-900  flex items-center justify-center "}>
-      <div className={location?.pathname !== "/splash" && "max-w-[1920px]"}>
+      <div
+        className={
+          location?.pathname?.includes("/video/")
+            ? " max-w-[1700px]"
+            : "max-w-[1440px]"
+        }
+      >
         {location?.pathname !== "/splash" && <Navbar collapse={collapse} />}
         <Routes>
           <Route

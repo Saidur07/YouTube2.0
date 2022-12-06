@@ -60,9 +60,9 @@ console.log(videoDetail)
   return (
     <div className="min-h-[95vh]">
      
-      <div className="grid grid-cols-5 ">
+      <div className="2xl:grid grid-cols-5 ">
         
-        <div className="col-span-4">
+        <div className="2xl:col-span-4">
      
           <Box sx={{ width: "100%", position: "sticky", top: "86px" }}>
             <ReactPlayer url={`https://www.youtube.com/watch?v=${id}`} className="react-player" controls />
