@@ -19,7 +19,6 @@ export const categories = [
   { name: "New", icon: <HomeIcon /> },
   { name: "Trending", icon: <WhatshotIcon /> },
   { name: "Music", icon: <MusicNoteIcon /> },
-  { name: "Programmer Saidur", icon: <SentimentSatisfiedAltIcon /> },
   { name: "Bangladeshi", icon: <SignLanguageIcon /> },
   { name: "Gaming", icon: <SportsEsportsIcon /> },
   { name: "Sports", icon: <FitnessCenterIcon /> },
