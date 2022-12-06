@@ -10,6 +10,7 @@ import VideoSkeleton from "./VideoSkeleton";
 import StreetviewIcon from '@mui/icons-material/Streetview';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import CommentIcon from '@mui/icons-material/Comment';
+import Comments from "./Comments";
 const VideoDetail = () => {
   const [videoDetail, setVideoDetail] = useState(null);
   const [videos, setVideos] = useState(null);
@@ -109,6 +110,7 @@ console.log(videoDetail)
 <p className="font-semibold cursor-pointer hover:bg-[#d6dfe631] inline p-1 rounded-lg transition-all duration-150" onClick={()=>setShowMore(!showMore)}>{description?.length > 500 && !showMore ? "Show more" :description?.length < 500 ? "" : "Show less" }</p>
            </div>
           </Box>
+          <Comments videoID={videoDetail?.id}></Comments>
         </div>
         <div className="flex justify-center items-center px-2 py-1 "  >
           <Videos videos={videos} single={true} loading={false}/>
